@@ -6,24 +6,9 @@ import dynamicImport from 'vite-plugin-dynamic-import';
 //import { sassMigratorQuasar } from "rollup-plugin-sass-migrator";
 //import {compression} from 'vite-plugin-compression2';
 //import { toHandlers } from 'vue';
-import path from 'node:path';
+import path from 'path';
 import { fileURLToPath, URL } from 'node:url';
 import RoutersCreateGen from './src/system/RoutersCreateGen.js';
-
-// https://vite.dev/config/
-// export default defineConfig({
-//   plugins: [react()],
-// })
-
-import path from "path";
-
-export default defineConfig({
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
-});
 
 export default defineConfig(({ command, mode }) => {
   const { heapUsed, external, heapTotal } = process.memoryUsage();
