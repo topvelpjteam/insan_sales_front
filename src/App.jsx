@@ -12,8 +12,8 @@ import _ from 'lodash';
 //import moment from 'moment';
 
 import "@/assets/scss/mainTypeNormal.scss";
-import "@/system/i18n/i18n";
-import { loadLanguageFromApi } from "@/system/i18n/i18n";
+import "./system/i18n/i18n";
+import { loadLanguageFromApi } from "./system/i18n/i18n";
 
 function App() {
 
