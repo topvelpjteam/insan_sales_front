@@ -1,0 +1,114 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url("../assets/default-profile.png") no-repeat center center/cover;
+}
+
+// 로그인 박스
+.login-box {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  width: 350px;
+  text-align: center;
+  animation: login-fadeIn 0.8s ease-in-out;
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #333;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+// input 그룹
+.login-input-group {
+  position: relative;
+
+  input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-bottom: 2px solid #aaa;
+    background: transparent;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+
+    &:focus {
+      border-bottom: 2px solid #3498db;
+    }
+  }
+
+  label {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    font-size: 16px;
+    color: #777;
+    pointer-events: none;
+    transition: 0.3s;
+  }
+
+  input:focus+label,
+  input:valid+label {
+    top: -10px;
+    font-size: 12px;
+    color: #3498db;
+  }
+}
+
+// 버튼
+.login-btn {
+  /*background: linear-gradient(135deg, #3498db, #2ecc71);*/
+  background: linear-gradient(135deg, #3498db, #029df7);
+  border: none;
+  padding: 12px;
+  border-radius: 30px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+  }
+}
+
+// 회원가입 링크
+.login_signup-link {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #555;
+
+  a {
+    color: #3498db;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// 애니메이션
+@keyframes login-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

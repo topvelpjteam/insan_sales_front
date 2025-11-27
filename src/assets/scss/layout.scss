@@ -1,0 +1,600 @@
+@use "./variables.scss" as v;
+
+::-webkit-scrollbar {width: 4px}
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.15);
+    border-radius: 0;
+}
+
+/* ===============================
+   메인 레이아웃
+   =============================== */
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+  overflow: hidden;
+}
+
+/* ===============================
+   GNB (상단 헤더)
+   =============================== */
+.main-layout .gnb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 49px;
+  padding: 0 2%;
+  background-color: #f9fafb;
+  color: v.$primary;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.1);
+}
+
+.header  {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 50px;
+  background-color: v.$white;
+  border-bottom: 1px solid v.$border;
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: v.$primary;
+    letter-spacing: -0.6px;
+  }
+  &-actions {
+    display: flex;
+    align-items: center;
+    .button-group {
+      display: flex;
+      align-items: center;
+      gap: 0 10px;
+    }
+  }
+}
+
+/* ===============================
+   BODY
+   =============================== */
+.main-layout .body {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ===============================
+   메뉴 컨테이너
+   =============================== */
+.menu-container {
+  display: flex;
+  height: 100vh;
+  font-family: "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  color: v.$dark;
+}
+
+/* 좌측 메뉴 */
+.left-menu {
+  width: 64px;
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid v.$border;
+  padding-top: 50px;
+  overflow: hidden;
+}
+
+/* 삼선 버튼 */
+.toggle-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 64px;
+  height: 50px;
+  background: v.$primary;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  &:hover,
+  &:active {
+    background: v.$blue;
+  }
+  .ico.hamburger {
+    background-color: v.$white;
+    width: 24px;
+    height: 24px;
+    mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='w-6 h-6 text-gray-600' fill='none' stroke='currentColor' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6h16M4 12h16M4 18h16'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+}
+
+.toggle-button .line {
+  width: 18px;
+  height: 2px;
+  background: #f8fafc;
+  border-radius: 1px;
+  margin: 3px 0;
+}
+
+/* 좌측 아이콘 메뉴 */
+.icon-menu {
+  list-style: none;
+  padding: 10px 4px;
+  margin: 0;
+  width: 100%;
+  max-height: calc(100vh - 50px);
+  overflow: overlay;
+  li + li {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    margin-top: 16px;
+    padding-top: 16px;
+  }
+}
+
+.icon-item {
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.25s ease, color 0.25s ease;
+  .link-name {
+    font-size: 12px;
+    color: v.$gray-600;
+  }
+  .link-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2px;
+    .ico {
+      width: 24px;
+      height: 24px;
+      background-color: v.$gray-300;
+      mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.2929 3.29289C11.6834 2.90237 12.3166 2.90237 12.7071 3.29289L18.7071 9.29289L20.7071 11.2929C21.0976 11.6834 21.0976 12.3166 20.7071 12.7071C20.3166 13.0976 19.6834 13.0976 19.2929 12.7071L19 12.4142V19C19 20.1046 18.1046 21 17 21H14C13.4477 21 13 20.5523 13 20V17H11V20C11 20.5523 10.5523 21 10 21H7C5.89543 21 5 20.1046 5 19V12.4142L4.70711 12.7071C4.31658 13.0976 3.68342 13.0976 3.29289 12.7071C2.90237 12.3166 2.90237 11.6834 3.29289 11.2929L5.29289 9.29289L11.2929 3.29289Z' fill='%23111928'/%3E%3C/svg%3E%0A");
+    }
+  }
+  &.active {
+    .link-icon {
+      background-color: v.$white;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+      .ico {
+        background-color: v.$primary;
+      }
+    }
+    .link-name {
+      color: v.$primary;
+    }
+  }
+}
+
+/* 우측 메뉴 */
+.right-menu {
+  background: v.$white;
+  padding: 20px 14px;
+  border-right: 1px solid v.$border;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  flex-grow: 1;
+  /* ✅ 화면 남은 공간을 꽉 채움 */
+  flex-basis: 0;
+  /* ✅ flexbox 계산 안정화 */
+  min-width: 0;
+  /* ✅ overflow 문제 방지 */
+
+  .top-menu-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: v.$dark;
+    margin-bottom: 16px;
+  }
+  .menu-item {
+    .menu-title  {
+      display: flex;
+      align-items: center;
+      gap: 0 4px;
+      padding: 8px 6px;
+      color: v.$dark;
+      font-size: 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      .menu-arrow {
+        font-size: 0;
+        width: 20px;
+        height: 20px;
+        background-color: v.$gray-400;
+        mask-image: url("data:image/svg+xml,%3Csvg width='20' height='21' viewBox='0 0 20 21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='0.2' d='M18.125 6.75V13.6945C18.125 13.8419 18.0665 13.9831 17.9623 14.0873C17.8581 14.1915 17.7169 14.25 17.5695 14.25H15.625V9.25C15.625 9.08424 15.5592 8.92527 15.4419 8.80806C15.3247 8.69085 15.1658 8.625 15 8.625H9.375L7.04141 6.875C6.93322 6.79386 6.80164 6.75 6.66641 6.75H5V4.875C5 4.70924 5.06585 4.55027 5.18306 4.43306C5.30027 4.31585 5.45924 4.25 5.625 4.25H9.16641C9.30164 4.25 9.43322 4.29386 9.54141 4.375L11.875 6.125H17.5C17.6658 6.125 17.8247 6.19085 17.9419 6.30806C18.0592 6.42527 18.125 6.58424 18.125 6.75Z' fill='%23343330'/%3E%3Cpath d='M17.5 5.5H12.0836L9.91641 3.875C9.69972 3.71332 9.43676 3.62567 9.16641 3.625H5.625C5.29348 3.625 4.97554 3.7567 4.74112 3.99112C4.5067 4.22554 4.375 4.54348 4.375 4.875V6.125H3.125C2.79348 6.125 2.47554 6.2567 2.24112 6.49112C2.0067 6.72554 1.875 7.04348 1.875 7.375V16.125C1.875 16.4565 2.0067 16.7745 2.24112 17.0089C2.47554 17.2433 2.79348 17.375 3.125 17.375H15.0695C15.3825 17.3746 15.6825 17.2501 15.9038 17.0288C16.1251 16.8075 16.2496 16.5075 16.25 16.1945V14.875H17.5695C17.8825 14.8746 18.1825 14.7501 18.4038 14.5288C18.6251 14.3075 18.7496 14.0075 18.75 13.6945V6.75C18.75 6.41848 18.6183 6.10054 18.3839 5.86612C18.1495 5.6317 17.8315 5.5 17.5 5.5ZM15 16.125H3.125V7.375H6.66641L9 9.125C9.10818 9.20614 9.23977 9.25 9.375 9.25H15V16.125ZM17.5 13.625H16.25V9.25C16.25 8.91848 16.1183 8.60054 15.8839 8.36612C15.6495 8.1317 15.3315 8 15 8H9.58359L7.41641 6.375C7.19972 6.21332 6.93676 6.12567 6.66641 6.125H5.625V4.875H9.16641L11.5 6.625C11.6082 6.70614 11.7398 6.75 11.875 6.75H17.5V13.625Z' fill='%23343330'/%3E%3C/svg%3E%0A");
+        &.open {
+          mask-image: url("data:image/svg+xml,%3Csvg width='20' height='21' viewBox='0 0 20 21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.7'%3E%3Cpath opacity='0.2' d='M16.25 7.375V9.25H5.45078C5.3196 9.24999 5.19174 9.29126 5.08532 9.36796C4.97889 9.44465 4.8993 9.55289 4.85781 9.67734L2.5 16.75V5.5C2.5 5.33424 2.56585 5.17527 2.68306 5.05806C2.80027 4.94085 2.95924 4.875 3.125 4.875H7.29141C7.42664 4.875 7.55822 4.91886 7.66641 5L10 6.75H15.625C15.7908 6.75 15.9497 6.81585 16.0669 6.93306C16.1842 7.05027 16.25 7.20924 16.25 7.375Z' fill='%23343330'/%3E%3Cpath d='M19.1406 9.14375C19.0246 8.98292 18.872 8.852 18.6954 8.7618C18.5188 8.6716 18.3233 8.62471 18.125 8.625H16.875V7.375C16.875 7.04348 16.7433 6.72554 16.5089 6.49112C16.2745 6.2567 15.9565 6.125 15.625 6.125H10.2086L8.04219 4.5C7.82545 4.33842 7.56252 4.25078 7.29219 4.25H3.125C2.79348 4.25 2.47554 4.3817 2.24112 4.61612C2.0067 4.85054 1.875 5.16848 1.875 5.5V16.75C1.875 16.9158 1.94085 17.0747 2.05806 17.1919C2.17527 17.3092 2.33424 17.375 2.5 17.375H16.4922C16.6234 17.375 16.7512 17.3337 16.8577 17.257C16.9641 17.1803 17.0437 17.0721 17.0852 16.9477L19.3109 10.2703C19.3735 10.0824 19.3907 9.88238 19.3611 9.68657C19.3315 9.49076 19.256 9.30474 19.1406 9.14375ZM7.29219 5.5L9.625 7.25C9.73318 7.33114 9.86477 7.375 10 7.375H15.625V8.625H5.45078C5.18842 8.62498 4.9327 8.70752 4.71985 8.86091C4.507 9.01431 4.34782 9.23079 4.26484 9.47969L3.125 12.8984V5.5H7.29219ZM16.0422 16.125H3.36719L5.45078 9.875H18.125L16.0422 16.125Z' fill='%23343330'/%3E%3C/g%3E%3C/svg%3E%0A");
+        }
+      }
+      .ico.toggle {
+        margin-left: auto;
+        width: 16px;
+        height: 16px;
+        background-color: v.$gray-400;
+        mask-image: url("data:image/svg+xml,%3Csvg width='16' height='17' viewBox='0 0 16 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.7'%3E%3Cpath d='M13.3537 6.85375L8.35366 11.8538C8.30722 11.9002 8.25207 11.9371 8.19138 11.9623C8.13068 11.9874 8.06561 12.0004 7.99991 12.0004C7.9342 12.0004 7.86913 11.9874 7.80844 11.9623C7.74774 11.9371 7.69259 11.9002 7.64616 11.8538L2.64616 6.85375C2.57615 6.78382 2.52847 6.6947 2.50914 6.59765C2.48982 6.50061 2.49972 6.40002 2.53759 6.3086C2.57547 6.21719 2.63962 6.13908 2.72191 6.08414C2.80421 6.0292 2.90096 5.99992 2.99991 6H12.9999C13.0989 5.99992 13.1956 6.0292 13.2779 6.08414C13.3602 6.13908 13.4243 6.21719 13.4622 6.3086C13.5001 6.40002 13.51 6.50061 13.4907 6.59765C13.4713 6.6947 13.4237 6.78382 13.3537 6.85375Z' fill='%23343330'/%3E%3C/g%3E%3C/svg%3E%0A");
+        transition: 0.3s all ease-in;
+      }      
+      &.active {
+        color: v.$primary;
+        .menu-arrow {
+          background-color: v.$primary;
+        }
+      }
+    }
+    &.open > .menu-title {
+      .menu-arrow {
+        background-color: v.$primary;
+      }
+      background-color: rgba(37, 99, 235, .1);        
+    }
+
+    &.open {
+      .ico.toggle {
+        background-color: v.$blue;
+        transform: rotate(180deg);
+      }
+    }
+    .submenu {
+      .menu-title  {
+        border-radius: 0;
+        span {
+          font-size: 12px;
+        }
+        
+        &.active {
+          color: v.$primary;
+          background-color: transparent;
+          .menu-arrow {
+            background-color: v.$primary;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
+/* ===============================
+   CONTENT
+   =============================== */
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: #f9fafb;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  border-bottom: 1px solid v.$border;
+  background-color: v.$white;
+}
+
+.content-body {
+  flex: 1;
+  overflow-y: overlay;
+  padding: 24px;
+  .ant-tabs-nav {
+    margin-bottom: 0;
+    &::before {
+      display: none;
+    }
+  }
+  .ant-tabs-tabpane {
+    padding: 16px;
+    background-color: v.$white;
+    box-shadow: 0 0 35px rgba(154, 161, 171, .15);
+    border-radius: 0 0 4px 4px;
+    border: 1px solid #d1d5db;
+    border-top: 2px solid #335eea; // 선택된 탭과 연결되는 파란색 상단 라인
+  }
+  .ant-tabs-card.ant-tabs-top {
+    .ant-tabs-nav {
+      margin-bottom: -1px; // 탭과 컨텐츠 연결
+      .ant-tabs-tab {
+        border-radius: 6px 6px 0 0;
+        padding: 10px 14px;
+        margin-right: 2px;
+        .ant-tabs-tab-btn {
+          font-size: 12px;
+          line-height: 14px;
+          color: v.$gray-600;
+        }
+        gap: 0 4px;
+        background-color: #e8ecef;
+        border: 1px solid #d1d5db;
+        border-bottom: 1px solid #d1d5db;
+        transition: all 0.15s ease;
+        position: relative;
+        top: 1px;
+        &:hover:not(.ant-tabs-tab-active) {
+          background-color: #f3f4f6;
+          .ant-tabs-tab-btn {
+            color: v.$gray-700;
+          }
+        }
+        &.ant-tabs-tab-active {
+          background-color: unset;
+          background-image: linear-gradient(#3d87fe, #335eea);
+          border-color: #3b82f6;
+          border-bottom-color: #335eea; // 파란색 하단 (컨텐츠 상단과 연결)
+          z-index: 1;
+          .ant-tabs-tab-btn {
+            font-weight: 500;
+            color: v.$white;
+          }
+          .tab-pin-icon {
+            background-color: rgba(255, 255, 255, 0.6);
+            &:hover {
+              background-color: v.$danger;
+            }
+            &.pinned {
+              background-color: v.$danger;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 탭 핀 아이콘 스타일
+  .tab-label-wrapper {
+    .tab-pin-icon {
+      width: 14px;
+      height: 14px;
+      cursor: pointer;
+      background-color: v.$gray-400;
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z'/%3E%3C/svg%3E");
+      mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      transition: all 0.2s ease;
+      &:hover {
+        background-color: v.$danger;
+      }
+      &.pinned {
+        background-color: v.$danger;
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  .breadcrumb-item{
+    font-size: 11px;
+    color: v.$gray-500;
+    font-weight: 500;
+    &:last-child {
+      color: v.$primary;
+    }
+  }
+  .breadcrumb-separator {
+    color: v.$gray-400;
+  }
+}
+
+/* ===============================
+   탭 드래그 앤 드롭 스타일
+   =============================== */
+.ant-tabs-nav-list {
+  .ant-tabs-tab {
+    // 드래그 시 기본 스타일
+    &[style*="opacity: 0.6"] {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border-radius: 6px 6px 0 0;
+    }
+  }
+}
+
+// 탭 드래그 중 커서 스타일
+.content-body .ant-tabs-tab {
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+/* ===============================
+   탭 컨텍스트 메뉴 스타일
+   =============================== */
+.ant-dropdown {
+  .ant-dropdown-menu {
+    padding: 4px 0;
+    border-radius: 6px;
+    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08),
+                0 3px 6px -4px rgba(0, 0, 0, 0.12),
+                0 9px 28px 8px rgba(0, 0, 0, 0.05);
+
+    .ant-dropdown-menu-item {
+      padding: 6px 16px;
+      font-size: 13px;
+      color: v.$gray-700;
+      transition: all 0.15s ease;
+
+      &:hover {
+        background-color: v.$bg-blue;
+        color: v.$primary;
+      }
+
+      &.ant-dropdown-menu-item-disabled {
+        color: v.$gray-400;
+        cursor: not-allowed;
+        &:hover {
+          background-color: transparent;
+          color: v.$gray-400;
+        }
+      }
+    }
+
+    .ant-dropdown-menu-item-divider {
+      margin: 4px 0;
+      background-color: v.$border;
+    }
+  }
+}
+
+
+
+/* ===============================
+   반응형 (1024px 이하)
+   =============================== */
+@media (max-width: 1024px) {
+
+
+
+  .main-layout .body {
+    flex-direction: column;
+  }
+
+  .menu-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    z-index: 100;
+    .left-menu,
+    .right-menu {
+      display: none;
+      pointer-events: none;
+    }
+    &.active {
+      width: 100%;
+      height: 100%;
+      background-color: v.$white;
+            
+      .left-menu,
+      .right-menu {
+        display: block;
+        pointer-events: all;
+      }      
+      
+    }
+    
+    // display: flex;
+    // flex-direction: column;
+    // width: 100%;
+    // height: auto;
+  }
+
+  /* 좌측 메뉴 → 가로로 변경 */
+  .left-menu {
+    width: 40%;
+    min-width: 160px;
+    padding: 20px;
+    // flex-direction: row;
+    // justify-content: flex-start;
+    // /* 중앙 대신 좌측 정렬 */
+    // align-items: center;
+    // border-right: none;
+    // //border-bottom: 1px solid #cbd5e1;
+    // padding: 8px;
+    // gap: 8px;
+    /* 아이템 간 간격 */
+  }
+
+  /* 토글 버튼 고정 크기 유지 */
+  .toggle-button {
+    left: unset;
+    right: 0;
+    width: 50px;
+    height: 50px;
+  }
+
+  // .left-menu .icon-menu {
+  //   display: flex;
+  //   flex-direction: row;
+  //   justify-content: flex-start;
+  //   /* 중앙 대신 좌측 정렬 */
+  //   align-items: center;
+  //   width: auto;
+  //   /* 아이템이 늘어나지 않게 */
+  //   padding: 0;
+  //   gap: 8px;
+  //   overflow-x: auto;
+  //   /* 아이콘 많으면 가로 스크롤 가능 */
+  // }
+
+  .left-menu .icon-item {
+    width: 100%;
+    /* 고정 크기 */
+    //padding: 6px 0;
+    flex-shrink: 0;
+    /* 아이템 축소 방지 */
+    display: flex;
+    align-items: center;
+    gap: 0 4px;
+    .link-icon {
+      margin: 0;
+    }
+  }
+
+  .left-menu .icon-item.active::before {
+    display: none;
+  }
+
+  /* 우측 메뉴 ↓ 좌측 아래로 */
+  .right-menu {
+    width: 100%;
+    border-left: none;
+    border-top: none;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 10px 16px;
+    margin-top: 4px;
+    flex-grow: 1;
+    flex-basis: auto;
+  }
+
+  .header {
+    padding-right: 70px;
+  }
+
+  /* Content ↓ 아래 */
+  .content {
+    width: 100%;
+    height: auto;
+    min-height: calc(100vh - 200px);
+    margin-top: 0;
+  }
+
+  /* 🔹 반응형에서 GNB 배경색 변경 */
+  .main-layout .gnb {
+    background-color: #3b82f6;
+    color: #fff
+      /* 연한 하늘색 */
+  }
+}
+
+/* ===============================
+   FOOTER
+   =============================== */
+.main-layout .footer {
+  height: 40px;
+  width: 100%;
+  background-color: v.$white;
+  color: v.$primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #e5e7eb;
+  box-shadow: 0 -2px 4px rgba(59, 130, 246, 0.05);
+}
+
+////

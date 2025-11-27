@@ -1,0 +1,136 @@
+@use "./variables.scss" as v;
+
+.multi-select-container {
+  position: relative;
+  width: 100%;
+  font-size: 12px;
+}
+
+.multi-select-display {
+  padding: 6px 12px;
+  border: 1px solid v.$border;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: v.$white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: border-color 0.2s;
+  overflow: overlay;
+  max-height: 60px;
+}
+
+.multi-select-display.selected {
+  border-color: v.$primary;
+}
+
+.multi-select-arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid v.$dark;
+  transition: transform 0.2s ease;
+}
+
+.multi-select-arrow.open {
+  transform: rotate(180deg);
+}
+
+.multi-select-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 250px;
+  overflow-y: auto;
+  border: 1px solid v.$border;
+  border-radius: 6px;
+  background-color: v.$white;
+  z-index: 100;
+  margin-top: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.multi-select-search-wrapper {
+  display: flex;
+  gap: 4px;
+  padding: 4px 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.multi-select-search {
+  flex: 1;
+  padding: 4px 6px;
+  border-radius: 4px;
+  border: 1px solid v.$border;
+  font-size: 12px;
+  outline: none;
+}
+
+.multi-select-search:focus {
+  border-color: v.$primary;
+  box-shadow: 0 0 2px v.$primary;
+}
+
+.multi-select-select-all {
+  padding: 4px 6px;
+  border: none;
+  border-radius: 4px;
+  background-color: v.$primary;
+  color: v.$white;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.multi-select-select-all:hover {
+  background-color: v.$blue;
+}
+
+.multi-select-option {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.multi-select-option:hover {
+  background-color: v.$gray-200;
+}
+
+.multi-select-option input[type="checkbox"] {
+  margin-right: 6px;
+  accent-color: v.$primary;
+}
+
+.multi-select-option.option-selected {
+  background-color: #e0f2fe;
+}
+
+.multi-select-no-options {
+  padding: 6px 10px;
+  font-size: 12px;
+  color: v.$gray-400;
+}
+
+.multi-select-option.option-disabled {
+  color: v.$gray-400;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.multi-select-option.option-disabled input {
+  cursor: not-allowed;
+}
+
+.multi-select-container.multi-select-disabled {
+  opacity: 0.6;
+  pointer-events: none;
+  /* 클릭 불가 */
+}
+
+.multi-select-display.disabled {
+  background-color: v.$gray-100;
+  cursor: not-allowed;
+}

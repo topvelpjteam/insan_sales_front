@@ -1,0 +1,111 @@
+@use "./variables.scss" as v;
+.ag-theme-alpine {
+  --ag-font-size: 12px;
+  /* 기본은 14px 정도 */
+  --ag-font-family: 'Pretendard', 'Segoe UI', sans-serif;
+  .ag-root-wrapper {
+    border-radius: 0!important;
+  }
+}
+
+.ag-header-cell-label {
+  justify-content: space-between;
+  color: v.$primary;
+}
+
+.ag-header-cell-text {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+}
+
+.text-center {
+  display: flex;
+  /* flex 유지 */
+  justify-content: center;
+  /* 가로 가운데 정렬 */
+  align-items: center;
+  /* 세로 가운데 정렬 (선택) */
+  text-align: center;
+  /* 텍스트도 정렬 */
+}
+
+.text-right {
+  display: flex;
+  /* flex 유지 */
+  justify-content: right;
+  /* 가로 가운데 정렬 */
+  align-items: right;
+  /* 세로 가운데 정렬 (선택) */
+  text-align: right;
+  /* 텍스트도 정렬 */
+}
+
+/* 1. 수직 중앙 정렬 (유지) */
+.ag-cell-vcenter {
+  display: flex;
+  align-items: center;
+}
+
+/* 2. '상품구분명' 컬럼의 오른쪽 테두리 강제 유지 */
+/* .ag-cell-range-right 클래스는 다음 컬럼과의 경계에 문제가 생길 때 복원하는 데 도움을 줄 수 있습니다. */
+.ag-cell.merged-cell-border,
+.ag-cell.merged-cell-border.ag-cell-range-right {
+  /* 오른쪽 테두리를 명시적으로 설정하여 다른 컬럼의 테두리가 사라지는 것을 방지 */
+  border-right: 1px solid var(--ag-border-color, v.$border) !important;
+
+  /* 왼쪽 테두리도 명시적으로 설정 (선택 사항, 그리드 시작 테두리가 사라질 경우) */
+  border-left: 1px solid var(--ag-border-color, v.$border) !important;
+}
+
+/* 3. 인접한 모든 컬럼의 오른쪽 테두리를 AG Grid 기본값으로 복원 */
+/* 셀 병합에 의해 다른 컬럼의 테두리가 영향을 받을 경우, 모든 셀의 오른쪽 테두리를 복원합니다. */
+.ag-cell {
+  border-right: 1px solid var(--ag-border-color, v.$border);
+}
+
+/* 4. Row Spanning이 적용된 셀의 상하 테두리 강제 적용 */
+/* 셀이 여러 행을 덮으면서 사라지는 상하 테두리를 복원합니다. */
+.ag-cell.merged-cell-border {
+  border-top: 1px solid var(--ag-border-color, v.$border) !important;
+  border-bottom: 1px solid var(--ag-border-color, v.$border) !important;
+}
+
+/* 기존 소계 행 */
+.summary-row {
+  background-color: #f0f8ff;
+  /* 연한 파랑 */
+  font-weight: bold;
+}
+
+/* panAmt 소계 행 */
+.total-row {
+  background-color: rgb(167, 189, 248);
+  /* 연한 노랑 */
+  font-weight: bold;
+}
+
+.ag-header-cell-text {
+  // 줄바꿈 처리 \n
+  white-space: pre-line !important;
+}
+
+/* AG Grid 툴팁 스타일 */
+.ag-tooltip,
+.ag-tooltip-custom,
+.ag-theme-alpine .ag-tooltip,
+.ag-theme-balham .ag-tooltip,
+.ag-theme-material .ag-tooltip {
+  background-color: #374151 !important;
+  color: #ffffff !important;
+  padding: 6px 10px !important;
+  border-radius: 6px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  max-width: 300px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+  border: none !important;
+  line-height: 1.4 !important;
+  z-index: 99999 !important;
+  white-space: nowrap !important;
+}

@@ -1,0 +1,31 @@
+.ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: all 0.15s ease-in-out;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #262626;
+  mask-size: contain;
+  mask-position: center center;
+  mask-repeat: no-repeat;
+}
+.ico.primary {
+  color: #335EEA;
+}
+.ico.secondary {
+  color: #506690;
+}
+.ico.success {
+  color: #42BA96;
+}
+.ico.info {
+  color: #7C69EF;
+}
+.ico.warning {
+  color: #ffc35a;
+}
+.ico.danger {
+  color: #DF4759;
+}

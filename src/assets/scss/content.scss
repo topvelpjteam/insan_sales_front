@@ -1,0 +1,927 @@
+@use "./variables.scss" as v;
+
+/* 전체 컨테이너 */
+.content-registe-container {
+  display: flex;
+  flex-direction: column;
+  height: 88vh;
+  font-family: "Segoe UI", Roboto, sans-serif;
+  background: v.$white;
+  font-size: 12px;
+}
+
+/* 최상단 */
+.content-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0px;
+  //border-bottom: 0px solid #e5e7eb;
+  //background: #f9fafb;
+}
+
+.content-page-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: v.$dark;
+}
+
+/* 메인 영역 */
+.content-main-area {
+  display: flex;
+  flex-wrap: nowrap;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  gap: 10px;
+}
+
+/* 좌측 패널 */
+.content-left-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-right: 0px solid #cbd5e1;
+  background-color: v.$white;
+  transition: width 0.3s;
+  flex-shrink: 0;
+  // box-sizing: border-box;      /* padding과 border 포함하여 계산 */
+  // max-width: 100%;             /* 부모 영역을 넘지 않도록 */
+  // overflow-x: hidden;          /* 가로 스크롤 방지 */
+  // overflow-y: auto;            /* 세로 스크롤 가능 */
+  // padding: 8px;                /* 내부 여백 */
+}
+
+// .content-left-panel,
+// .content-right-panel,
+// .content-center-panel {
+//   transition: width 0.3s ease;
+//   /* width 변경 시 부드럽게 애니메이션 */
+//   overflow: hidden;
+//   /* 닫힐 때 내용이 튀어나오지 않도록 */
+// }
+.content-panel-title,
+.content-panel-title-bg {
+  color: v.$dark;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: -0.4px;
+}
+// .content-panel-title-bg {
+//   background-color: v.$gray-50;
+// }
+
+/* 조회조건 행 */
+.content-query-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  &+.content-query-row {
+    margin-top: 10px;
+  }
+}
+
+/* label + input 묶음 */
+.content-query-row-query-item {
+  display: flex;
+  align-items: center;
+  /* 두 세트가 50%씩 차지 */
+  gap: 8px;
+}
+
+/* 라벨: 우측 정렬 */
+.content-query-label {
+  min-width: 100px;
+  font-size: 12px;
+  color: v.$gray-500;
+  flex-shrink: 0;
+}
+
+/* 입력 컴포넌트 */
+.content-query-input:not(select) {
+  padding: 4px 6px;
+  border: 1px solid v.$form-bd;
+  color: v.$form-tx;
+  width: 100%;
+  height: 30px;
+
+  &:focus {
+    border-color: v.$primary;
+    box-shadow: 0 0 2px v.$primary;
+  }
+}
+
+select.content-query-input {
+  width: 100%;
+}
+
+.input-search-btn {
+  display: inline-flex;
+  font-size: 0;
+  background-color: v.$primary;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  background-position: center;
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+}
+
+.content-range-group {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  .content-query-input,
+  select {
+    flex: 1;
+    min-width: 0;
+    max-width: calc((100% - 20px) / 2);
+  }
+
+  span {
+    flex-shrink: 0;
+    padding: 0 2px;
+    text-align: center;
+    color: v.$form-tx;
+  }
+}
+
+.content-radio-group {
+  display: flex;
+  align-items: center;
+  gap: 0 10px;
+  color: v.$form-tx;
+  width: 100%;
+
+  .content-radio-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0 4px;
+  }
+}
+
+
+
+/* 검색 버튼 */
+.content-search-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0 2px;
+  margin-top: 20px;
+}
+
+@mixin content-button {
+  padding: 4px 8px;
+  border: 1px solid transparent;
+  min-width: 60px;
+  font-size: 12px;
+  cursor: pointer;
+
+}
+
+.content-search-button {
+  @include content-button;
+  background-color: v.$primary;
+  color: v.$white;
+
+  &:hover:not(:disabled),
+  &:active:not(:disabled) {
+    background-color: v.shade-color(v.$primary, 15%);
+    border-color: v.shade-color(v.$primary, 20%);
+  }
+}
+
+
+.content-download-button {
+  @include content-button;
+  background-color: v.$success;
+  color: v.$white;
+  margin-right: 2px;
+
+  &:hover:not(:disabled),
+  &:active:not(:disabled) {
+    background-color: v.shade-color(v.$success, 15%);
+    border-color: v.shade-color(v.$success, 20%);
+  }
+}
+
+
+.content-init-button {
+  @include content-button;
+  background-color: v.$light;
+  color: v.$dark;
+  border-color: v.$gray-200;
+
+  &:hover:not(:disabled),
+  &:active:not(:disabled) {
+    background-color: v.shade-color(v.$light, 15%);
+    border-color: v.shade-color(v.$light, 20%);
+  }
+}
+
+.content-delete-button {
+  @include content-button;
+  background-color: v.$danger;
+  color: v.$white;
+
+  &:hover:not(:disabled),
+  &:active:not(:disabled) {
+    background-color: v.shade-color(v.$danger, 15%);
+    border-color: v.shade-color(v.$danger, 20%);
+  }
+}
+
+.content-button-group {
+  display: flex;
+  align-items: center;
+  gap: 0 2px;
+}
+
+
+/* 중앙 패널 */
+.content-center-panel {
+  display: flex;
+  flex-direction: column;
+  //border-top: 1px solid #e5e7eb;
+  /* 🔹 상단만 남김 */
+  border-left: none;
+  /* 🔹 좌측 제거 */
+  border-right: none;
+  /* 🔹 우측 제거 */
+  border-bottom: none;
+  /* 🔹 하단 제거 */
+  background-color: v.$white;
+  min-width: 200px;
+  flex-shrink: 0;
+  /* ✅ 중요: 자식 절대 위치 기준 */
+}
+
+.content-panel-grid {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /* 부모(.content-center-panel) 높이 100% 차지 */
+  width: 100%;
+  margin-top: 12px;
+  box-sizing: border-box;
+  overflow: hidden;
+  /* 스크롤은 하위에서 */
+}
+
+.content-panel-grid table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.content-panel-grid th,
+.content-panel-grid td {
+  border: 1px solid #e5e7eb;
+  padding: 8px;
+  text-align: left;
+  font-size: 12px;
+}
+
+.content-panel-grid tr:hover {
+  background-color: #f1f5f9;
+}
+
+.content-panel-grid tr.selected {
+  background-color: #dbeafe;
+}
+
+/* 우측 패널 */
+.content-right-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #cbd5e1;
+  background-color: v.$white;
+  min-width: 120px;
+  transition: width 0.3s;
+  flex-shrink: 0;
+}
+
+.content-panel-detail {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  font-size: 12px;
+}
+
+/* 하단 버튼 */
+.content-panel-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.content-help-button {
+  @include content-button;
+  background-color: v.$orange;
+  color: v.$white;
+  margin-right: 1px;
+
+  &:hover:not(:disabled),
+  &:active:not(:disabled) {
+    background-color: v.shade-color(v.$orange, 15%);
+    border-color: v.shade-color(v.$orange, 20%);
+  }
+}
+
+
+.content-bulk-button {
+  @include content-button;
+  background-color: v.$info;
+  color: v.$white;
+
+  &:hover:not(:disabled),
+  &:active:not(:disabled) {
+    background-color: v.shade-color(v.$info, 15%);
+    border-color: v.shade-color(v.$info, 20%);
+  }
+}
+
+
+.content-saveAll-button {
+  @include content-button;
+  background-color: v.$success;
+  color: v.$white;
+  margin-right: 2px;
+
+  &:hover:not(:disabled),
+  &:active:not(:disabled) {
+    background-color: v.shade-color(v.$success, 15%);
+    border-color: v.shade-color(v.$success, 20%);
+  }
+}
+
+
+.content-cancel-button {
+  @include content-button;
+  background-color: v.$warning;
+  color: v.$white;
+  margin-right: 1px;
+
+  &:hover:not(:disabled),
+  &:active:not(:disabled) {
+    background-color: v.shade-color(v.$warning, 15%);
+    border-color: v.shade-color(v.$warning, 20%);
+  }
+}
+
+.content-upload-button {
+  @include content-button;
+  background-color: v.$primary;
+  color: v.$white;
+  margin-right: 1px;
+
+  &:hover:not(:disabled),
+  &:active:not(:disabled) {
+    background-color: v.shade-color(v.$primary, 15%);
+    border-color: v.shade-color(v.$primary, 20%);
+  }
+}
+
+.content-save-button {
+  @include content-button;
+  background-color: v.$success;
+  color: v.$white;
+
+  &:hover:not(:disabled),
+  &:active:not(:disabled) {
+    background-color: v.shade-color(v.$success, 15%);
+    border-color: v.shade-color(v.$success, 20%);
+  }
+}
+
+
+.content-new-button {
+  @include content-button;
+  background-color: v.$teal;
+  color: v.$white;
+
+  &:hover:not(:disabled),
+  &:active:not(:disabled) {
+    background-color: v.shade-color(v.$teal, 15%);
+    border-color: v.shade-color(v.$teal, 20%);
+  }
+}
+
+.content-new-cancel-button {
+  @include content-button;
+  background-color: v.$cyan;
+  color: v.$white;
+
+  &:hover:not(:disabled),
+  &:active:not(:disabled) {
+    background-color: v.shade-color(v.$cyan, 15%);
+    border-color: v.shade-color(v.$cyan, 20%);
+  }
+
+  margin-right: 1px;
+}
+
+
+
+
+/* 좌측 열기/닫기 버튼 */
+.toggle-sidebar-button-left,
+.toggle-sidebar-button-left-closed {
+  width: 20px;
+  height: 40px;
+  border: none;
+  background-color: v.$primary;
+  color: v.$white;
+  cursor: pointer;
+  border-radius: 4px;
+  position: absolute;
+  top: 20px;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.toggle-sidebar-button-left {
+  right: -0px;
+}
+
+.toggle-sidebar-button-left-closed {
+  left: 0;
+}
+
+.toggle-sidebar-button-left:hover,
+.toggle-sidebar-button-left-closed:hover {
+  background-color: #2563eb;
+}
+
+.content-accordion-section {
+  margin-bottom: 16px;
+  /* 섹션 간 여백 */
+  border: 1px solid #e5e7eb;
+  /* 옅은 테두리 */
+  border-radius: 8px;
+  /* 모서리 둥글게 */
+  overflow: hidden;
+  /* 모서리 깔끔하게 */
+  background-color: #f1f5f9;
+  /* 배경 흰색 */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  /* 은은한 그림자 */
+}
+
+.content-accordion-header {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background-color: #f1f5f9;
+  color: v.$primary;
+  /* 헤더 밝은 톤 */
+  font-weight: 600;
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.content-accordion-header:hover {
+  background-color: #f1f5f9;
+  /* hover 효과 */
+}
+
+.content-accordion-body {
+  padding: 12px 16px;
+  /* 내부 여백 */
+  background-color: v.$white;
+}
+
+.content-accordion-arrow {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.content-detail-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /* 부모 높이 기준 */
+}
+
+.content-sidebar-content {
+  flex: 1 1 auto;
+  padding: 12px;
+  border: 1px solid v.$border;
+}
+
+.content-panel-title+.content-sidebar-content {
+  margin-top: 12px;
+}
+
+.content-popup-search-wrapper {
+  position: sticky;
+  /* 스크롤 시 항상 보이게 */
+  bottom: 0;
+  background-color: v.$white;
+  padding: 10px 16px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 10;
+  /* 다른 내용 위로 */
+}
+
+.content-custom-number-input {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: v.$white;
+
+  /* ❗ 너비를 100%로 설정하여 부모 요소만큼 확장 */
+  width: 100%;
+}
+
+.content-number-text-input {
+  width: 100%;
+  text-align: right;
+  border: none;
+  outline: none;
+  padding: 6px 8px;
+  font-size: 14px;
+}
+
+.content-btn-minus,
+.content-btn-plus {
+  width: 28px;
+  height: 28px;
+  background: #f3f4f6;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.content-btn-minus:hover,
+.content-btn-plus:hover {
+  background: #e5e7eb;
+}
+
+/* ✅ 각 (label + input/select) 세트 */
+.content-query-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+/* 텍스트 영역 컴포넌트 */
+.content-query-textarea {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  color: v.$form-tx;
+  width: 100%;
+  height: 100%;
+  /* 부모 높이에 맞춤 */
+  font-size: 12px;
+  line-height: 1.4;
+  font-family: "Segoe UI", Roboto, sans-serif;
+  resize: none;
+  /* 사용자가 마음대로 높이 변경 불가 */
+  box-sizing: border-box;
+  background-color: v.$white;
+  position: relative;
+  top: 0;
+}
+
+/* 포커스 시 스타일 */
+.content-query-textarea:focus {
+  border-color: v.$primary;
+  box-shadow: 0 0 2px v.$primary;
+  outline: none;
+}
+
+/* 비활성화 상태 */
+.content-query-textarea:disabled {
+  background-color: #f3f4f6;
+  color: #999;
+  cursor: not-allowed;
+}
+
+/* 스크롤바 커스터마이징 */
+.content-query-textarea::-webkit-scrollbar {
+  width: 6px;
+}
+
+.content-query-textarea::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 3px;
+}
+
+.content-query-textarea::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+
+
+/* ✅ 본문 스크롤 */
+.content-scrollable-content {
+  overflow-y: auto;
+  flex: 1;
+  padding: 12px;
+  background: #fafafa;
+}
+
+
+/* ✅ 상단 버튼 고정 */
+.content-sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  margin-bottom: 10px;
+  border: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  .content-left-panel {
+    background-color: transparent;
+  }
+  .content-sidebar-content {
+    background-color: v.$gray-50;
+    border: none;
+  }
+}
+
+/* 버튼 영역 고정 */
+
+
+.content-top-fixed {
+  top: 0;
+  //border-bottom: 1px solid #ccc;
+}
+
+.content-bottom-fixed {
+  bottom: 0;
+  //border-top: 1px solid #ccc;
+}
+
+
+/* 반응형: 화면이 768px 이하이면 패널을 세로로 배치 */
+@media (max-width: 768px) {
+  .content-main-area {
+    flex-wrap: wrap;
+    flex-direction: column;
+    /* 세로로 배치 */
+  }
+
+  .content-left-panel,
+  .content-center-panel,
+  .content-right-panel {
+    width: 100% !important;
+    min-width: 0;
+  }
+
+  /* 필요시 순서 지정 */
+  .content-left-panel {
+    order: 1;
+  }
+
+  .content-center-panel {
+    order: 2;
+    //min-height: 500px;
+
+    flex: 1 1 auto;
+    /* 필요에 맞게 조정 */
+  }
+
+  .content-right-panel {
+    order: 3;
+  }
+}
+
+
+/* ===============================
+   발주 기본정보(마스터) 3:7 비율 구성 (수정 안정 버전)
+   =============================== */
+
+/* 전체 그리드 컨테이너 */
+.content-panel-grid1 {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 10px;
+  box-sizing: border-box;
+  padding: 0;
+  flex-shrink: 0;
+  /* 줄어들지 않게 */
+  min-height: 150px;
+  /* 최소 높이 확보 */
+  height: auto;
+  /* 내용만큼 늘어나도록 */
+  margin-bottom: 10px;
+}
+
+/* 좌측 영역 (3) */
+.content-left-area1 {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  background-color: v.$white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 8px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-width: 250px;
+  min-height: 100%;
+  /* ✅ 부모 높이에 맞춤 */
+}
+
+/* 우측 영역 (7) */
+.content-right-area1 {
+  flex: 7;
+  display: flex;
+  flex-direction: column;
+  background-color: v.$white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 8px;
+  box-sizing: border-box;
+  //overflow: auto;
+  width: 100%;
+  min-height: 100%;
+  /* ✅ 부모 높이에 맞춤 */
+}
+
+
+/* 그 아래 영역: 남은 공간 차지 */
+.content-panel-grid-bottom {
+  flex: 1 1 auto;
+  /* 남은 공간 꽉 채우기 */
+  overflow: auto;
+  /* 내용이 많으면 스크롤 */
+  background-color: #fafafa;
+  /* 예시 배경 */
+  padding: 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.content-row-create {
+  background-color: #d9edf7;
+}
+
+/* 파랑 */
+.content-row-update {
+  background-color: #fcf8e3;
+}
+
+/* 노랑 */
+.content-row-delete {
+  background-color: #f2dede;
+  text-decoration: line-through;
+}
+
+/* 빨강 */
+
+
+/* 체크박스 스타일 (라디오 버튼과 디자인 통일) */
+[type="checkbox"] {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+
+  /* 브라우저 기본 스타일 제거 (중요) */
+  appearance: none;
+  -webkit-appearance: none;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  /* ✅ 체크 안 된 상태 (둥근 사각형 테두리) */
+  background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0.5' y='0.5' width='17' height='17' rx='3.5' fill='white' stroke='%23DDDDDD'/%3E%3C/svg%3E");
+
+  &:checked {
+    /* ✅ 체크 된 상태 (파란 배경 + 흰색 체크 아이콘) */
+    background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='18' height='18' rx='4' fill='%233b82f6'/%3E%3Cpath d='M5 9L7.5 11.5L13 6' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  }
+
+  /* 비활성화(disabled) 상태 추가 (선택사항) */
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+/* =====================================================
+   UpperPanel - 상단 가로 배치형 검색 필터
+   ===================================================== */
+.upper-panel {
+  background: #fafafa;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.upper-panel-header {
+  padding: 10px 16px 0;
+
+  .upper-panel-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: v.$dark;
+    margin: 0;
+  }
+}
+
+.upper-panel-content {
+  padding: 12px 16px;
+
+  /* SearchFilter 내부 스타일 오버라이드 */
+  .content-query-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .content-query-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: auto;
+    flex: 0 0 auto;
+  }
+
+  .content-query-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+    white-space: nowrap;
+    min-width: 70px;
+    text-align: right;
+  }
+
+  .content-query-input,
+  select {
+    height: 30px;
+    padding: 0 10px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    font-size: 13px;
+    min-width: 150px;
+    max-width: 200px;
+
+    &:focus {
+      border-color: v.$primary;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+    }
+  }
+
+  /* 버튼 영역 - 오른쪽 정렬 */
+  .content-query-buttons {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+  }
+
+  .content-init-button,
+  .content-search-button {
+    height: 30px;
+    padding: 0 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .content-init-button {
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    color: #666;
+
+    &:hover {
+      border-color: v.$primary;
+      color: v.$primary;
+    }
+  }
+
+  .content-search-button {
+    background: v.$primary;
+    border: 1px solid v.$primary;
+    color: #fff;
+
+    &:hover {
+      background: lighten(v.$primary, 10%);
+      border-color: lighten(v.$primary, 10%);
+    }
+  }
+}

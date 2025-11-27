@@ -1,0 +1,342 @@
+{
+  "buttonPosition": "top",
+  "button": [
+    {
+      "key": "btnDelete",
+      "label": "삭제",
+      "className": "content-delete-button",
+      "onClick": "handleDetailDelete",
+      "isChangedCheck": false
+    },
+    {
+      "key": "btnSave",
+      "label": "저장",
+      "className": "content-search-button",
+      "onClick": "handleDetailSave",
+      "isChangedCheck": true
+    }
+  ],
+  "rowByColCnt": 2,
+  "form": [
+    {
+      "title": "기본 정보",
+      "columns": [
+        {
+          "name": "custId",
+          "label": "고객코드",
+          "type": "text",
+          "maxLength": 14,
+          "disabled": true,
+          "required": true
+        },
+        {
+          "name": "custNm",
+          "label": "고객명",
+          "type": "text",
+          "maxLength": 100,
+          "disabled": false,
+          "required": true
+        },
+        {
+          "name": "nationId",
+          "label": "국적",
+          "type": "select",
+          "maxLength": -1,
+          "disabled": false,
+          "required": true,
+          "code": "nationData"
+        },
+        {
+          "name": "custGbn",
+          "label": "고객구분",
+          "type": "select",
+          "maxLength": -1,
+          "disabled": false,
+          "required": true,
+          "code": "custGbnData"
+        },
+        {
+          "name": "sexGbn",
+          "label": "성별",
+          "type": "select",
+          "disabled": false,
+          "required": false,
+          "code": "sexGbnData"
+        },
+        {
+          "name": "mngStaff",
+          "label": "담당사원",
+          "type": "select",
+          "maxLength": -1,
+          "disabled": false,
+          "required": true,
+          "code": "staffData"
+        }
+      ]
+    },
+    {
+      "title": "주소 정보",
+      "columns": [
+        {
+          "name": "zipId",
+          "label": "우편번호",
+          "type": "text",
+          "maxLength": 6,
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "custAddr1",
+          "label": "주소",
+          "type": "text",
+          "maxLength": 100,
+          "disabled": true,
+          "required": false
+        },
+        {
+          "name": "custAddr2",
+          "label": "상세주소",
+          "type": "text",
+          "maxLength": 100,
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "dmChk",
+          "label": "DM수신여부",
+          "type": "radio",
+          "disabled": false,
+          "required": false,
+          "code": "dmReceiveData"
+        }
+      ]
+    },
+    {
+      "title": "생년월일 및 연령",
+      "columns": [
+        {
+          "name": "custBirthD",
+          "label": "생년월일",
+          "type": "date",
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "custDGbn",
+          "label": "생년월일구분",
+          "type": "radio",
+          "disabled": false,
+          "required": false,
+          "code": "birthdayTypeData"
+        },
+        {
+          "name": "custAge",
+          "label": "연령대",
+          "type": "select",
+          "disabled": false,
+          "required": false,
+          "code": "ageGbnData"
+        },
+        {
+          "name": "custJob",
+          "label": "직업",
+          "type": "select",
+          "disabled": false,
+          "required": false,
+          "code": "jobGbnData"
+        }
+      ]
+    },
+    {
+      "title": "연락처 정보",
+      "columns": [
+        {
+          "name": "custHp",
+          "label": "휴대폰",
+          "type": "text",
+          "maxLength": 13,
+          "disabled": false,
+          "required": false,
+          "placeholder": "010-1234-5678"
+        },
+        {
+          "name": "smsChk",
+          "label": "문자수신",
+          "type": "radio",
+          "disabled": false,
+          "required": false,
+          "code": "smsReceiveData"
+        },
+        {
+          "name": "custTel",
+          "label": "전화번호",
+          "type": "text",
+          "maxLength": 13,
+          "disabled": false,
+          "required": false,
+          "placeholder": "02-1234-5678"
+        },
+        {
+          "name": "callChk",
+          "label": "전화수신",
+          "type": "radio",
+          "disabled": false,
+          "required": false,
+          "code": "callReceiveData"
+        },
+        {
+          "name": "custEmail",
+          "label": "이메일",
+          "type": "text",
+          "maxLength": 100,
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "emailChk",
+          "label": "메일수신",
+          "type": "radio",
+          "disabled": false,
+          "required": false,
+          "code": "emailReceiveData"
+        }
+      ]
+    },
+    {
+      "title": "제품 및 브랜드 정보",
+      "columns": [
+        {
+          "name": "custUse",
+          "label": "주사용제품",
+          "type": "text_button",
+          "maxLength": 100,
+          "disabled": true,
+          "required": false,
+          "buttonLabel": "검색",
+          "onButtonClick": "handleProductSearch"
+        },
+        {
+          "name": "custUseId",
+          "label": "주사용제품ID",
+          "type": "text",
+          "maxLength": 20,
+          "disabled": true,
+          "required": false,
+          "hidden": true
+        },
+        {
+          "name": "corpNm",
+          "label": "기존사용브랜드",
+          "type": "text_button",
+          "maxLength": 100,
+          "disabled": true,
+          "required": false,
+          "buttonLabel": "검색",
+          "onButtonClick": "handleBrandSearch"
+        },
+        {
+          "name": "corpId",
+          "label": "기존사용브랜드ID",
+          "type": "text",
+          "maxLength": 20,
+          "disabled": true,
+          "required": false,
+          "hidden": true
+        },
+        {
+          "name": "skinWorryNm",
+          "label": "피부고민",
+          "type": "text_button",
+          "maxLength": 100,
+          "disabled": true,
+          "required": false,
+          "buttonLabel": "검색",
+          "onButtonClick": "handleSkinWorrySearch"
+        },
+        {
+          "name": "skinWorryGbn",
+          "label": "피부고민코드",
+          "type": "text",
+          "maxLength": 20,
+          "disabled": true,
+          "required": false,
+          "hidden": true
+        }
+      ]
+    },
+    {
+      "title": "피부 및 구매 정보",
+      "columns": [
+        {
+          "name": "skinType",
+          "label": "피부상태",
+          "type": "select",
+          "disabled": false,
+          "required": false,
+          "code": "skinTypeData"
+        },
+        {
+          "name": "sellEvent",
+          "label": "구매동기",
+          "type": "select",
+          "disabled": false,
+          "required": false,
+          "code": "buyReasonData"
+        },
+        {
+          "name": "custMake",
+          "label": "메이크업정도",
+          "type": "text",
+          "maxLength": 100,
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "custHobb",
+          "label": "취향",
+          "type": "text",
+          "maxLength": 100,
+          "disabled": false,
+          "required": false
+        }
+      ]
+    },
+    {
+      "title": "기타 정보",
+      "columns": [
+        {
+          "name": "custData",
+          "label": "개인자료",
+          "type": "textarea",
+          "maxLength": 300,
+          "disabled": false,
+          "required": false,
+          "style": {
+            "height": "100px"
+          }
+        },
+        {
+          "name": "custOpenD",
+          "label": "등록일자",
+          "type": "date",
+          "disabled": true,
+          "required": false
+        },
+        {
+          "name": "custLastD",
+          "label": "최종방문일",
+          "type": "date",
+          "disabled": true,
+          "required": false
+        },
+        {
+          "name": "custUpD",
+          "label": "최종수정일",
+          "type": "date",
+          "disabled": true,
+          "required": false
+        }
+      ]
+    }
+  ]
+}

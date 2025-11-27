@@ -1,0 +1,519 @@
+{
+  "buttonPosition": "top",
+  "button": [
+    {
+      "key": "btnDelete",
+      "label": "삭제",
+      "className": "content-delete-button",
+      "onClick": "handleDetailDelete",
+      "isChangedCheck": false
+    },
+    {
+      "key": "btnSave",
+      "label": "저장",
+      "className": "content-save-button",
+      "onClick": "handleDetailSave",
+      "isChangedCheck": true
+    }
+  ],
+  "rowByColCnt": 1,
+  "form": [
+    {
+      "title": "기본정보",
+      "columns": [
+        {
+          "name": "goodsId",
+          "label": "상품고유키",
+          "type": "text",
+          "maxLength": 50,
+          "disabled": true,
+          "required": true
+        },
+        {
+          "name": "brandId",
+          "label": "브랜드",
+          "type": "multi_select",
+          "maxLength": -1,
+          "disabled": true,
+          "required": true,
+          "code": "brandData"
+        },
+        {
+          "name": "goodsIdBrand",
+          "label": "상품코드",
+          "type": "text",
+          "maxLength": 60,
+          "disabled": true,
+          "required": true
+        },
+        {
+          "name": "goodsNm",
+          "label": "상품명",
+          "type": "text",
+          "maxLength": 200,
+          "disabled": true,
+          "required": true
+        },
+        {
+          "name": "goodsNmEn",
+          "label": "영문 상품명",
+          "type": "text",
+          "maxLength": 20,
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "goodsNmJp",
+          "label": "일문 상품명",
+          "type": "text",
+          "maxLength": 200,
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "goodsNmCn",
+          "label": "중문 상품명",
+          "type": "text",
+          "maxLength": 200,
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "barCode",
+          "label": "바코드",
+          "type": "text",
+          "maxLength": 50,
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "goodsNo",
+          "label": "호수",
+          "type": "text",
+          "maxLength": 20,
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "foreignId",
+          "label": "본사코드",
+          "type": "text",
+          "maxLength": 30,
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "foreignNm",
+          "label": "본사상품명",
+          "type": "text",
+          "maxLength": 200,
+          "disabled": false,
+          "required": false
+        }
+      ]
+    },
+    {
+      "title": "분류 정보",
+      "columns": [
+        {
+          "name": "goodsGbn",
+          "label": "상품구분",
+          "type": "select",
+          "disabled": false,
+          "required": true,
+          "code": "goodsGbnData"
+        },
+        {
+          "name": "makerGbn",
+          "label": "메이커 코드",
+          "type": "select",
+          "disabled": false,
+          "required": false,
+          "code": "makerData"
+        },
+        {
+          "name": "collectionGbn",
+          "label": "컬렉션 구분",
+          "type": "select",
+          "disabled": false,
+          "required": true,
+          "code": "collectionData"
+        },
+        {
+          "name": "btypeGbn",
+          "label": "대분류",
+          "type": "select",
+          "disabled": false,
+          "required": true,
+          "code": "btypeData"
+        },
+        {
+          "name": "mtypeGbn",
+          "label": "중분류",
+          "type": "select",
+          "disabled": false,
+          "required": true,
+          "code": "mtypeData"
+        },
+        {
+          "name": "stypeGbn",
+          "label": "소분류",
+          "type": "select",
+          "disabled": false,
+          "required": true,
+          "code": "stypeData"
+        },
+        {
+          "name": "nationGbn",
+          "label": "원산지 국가",
+          "type": "select",
+          "disabled": false,
+          "required": false,
+          "code": "nationData"
+        },
+        {
+          "name": "hsCode",
+          "label": "HS코드",
+          "type": "text",
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "useGbn",
+          "label": "사용자 구분",
+          "type": "text",
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "setGbn",
+          "label": "셋트 구분",
+          "type": "radio",
+          "disabled": false,
+          "required": false,
+          "code": "setData"
+        },
+        {
+          "name": "channGbn",
+          "label": "채널 코드",
+          "type": "select",
+          "disabled": false,
+          "required": false,
+          "code": "channData"
+        },
+        {
+          "name": "manaGbn",
+          "label": "운용 구분",
+          "type": "select",
+          "disabled": false,
+          "required": false,
+          "code": "manaData"
+        },
+        {
+          "name": "funcGbn",
+          "label": "기능성 구분",
+          "type": "text",
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "boxGbn",
+          "label": "포장 단위",
+          "type": "select",
+          "disabled": false,
+          "required": false,
+          "code": "boxData"
+        },
+        {
+          "name": "abcClass",
+          "label": "ABC 분석 등급",
+          "type": "select",
+          "disabled": false,
+          "required": false,
+          "code": "abcClassData"
+        }
+      ]
+    },
+    {
+      "title": "물리적 특성",
+      "columns": [
+        {
+          "name": "goodsCapa",
+          "label": "용량",
+          "type": "number",
+          "required": false,
+          "number": {
+            "step": 0.1,
+            "min": 0,
+            "max": 9999
+          }
+        },
+        {
+          "name": "goodsUnit",
+          "label": "용량단위",
+          "type": "text",
+          "required": false
+        },
+        {
+          "name": "packingSize",
+          "label": "포장크기",
+          "type": "text",
+          "required": false
+        },
+        {
+          "name": "storageCondition",
+          "label": "보관조건",
+          "type": "select",
+          "required": false,
+          "code": "storageData"
+        },
+        {
+          "name": "expiryPeriod",
+          "label": "유통기한 (일수)",
+          "type": "number",
+          "required": false,
+          "number": {
+            "step": 1,
+            "min": 0,
+            "max": 9999
+          }
+        }
+      ]
+    },
+    {
+      "title": "가격 정보",
+      "columns": [
+        {
+          "name": "supplyDan",
+          "label": "소비자가격",
+          "type": "number",
+          "number": {
+            "step": 1,
+            "min": 0,
+            "max": 999999999999
+          }
+        },
+        {
+          "name": "buyDan",
+          "label": "구매단가",
+          "type": "number",
+          "number": {
+            "step": 1,
+            "min": 0,
+            "max": 9999
+          }
+        },
+        {
+          "name": "moneyGbn",
+          "label": "화폐구분",
+          "type": "select",
+          "code": "moneyData"
+        },
+        {
+          "name": "taxRate",
+          "label": "세율",
+          "type": "number",
+          "number": {
+            "step": 1,
+            "min": 0,
+            "max": 9999
+          }
+        },
+        {
+          "name": "vatYn",
+          "label": "부가세 적용",
+          "type": "radio",
+          "code": "vatData"
+        }
+      ]
+    },
+    {
+      "title": "공급망 관리",
+      "columns": [
+        {
+          "name": "supplierId",
+          "label": "공급업체코드",
+          "type": "text"
+        },
+        {
+          "name": "leadTime",
+          "label": "리드타임(일수)",
+          "type": "number",
+          "number": {
+            "step": 1,
+            "min": 0,
+            "max": 9999
+          }
+        },
+        {
+          "name": "safetyStock",
+          "label": "안전재고량",
+          "type": "number",
+          "number": {
+            "step": 1,
+            "min": 0,
+            "max": 9999
+          }
+        },
+        {
+          "name": "maxStock",
+          "label": "최대재고량",
+          "type": "number",
+          "number": {
+            "step": 1,
+            "min": 0,
+            "max": 9999
+          }
+        },
+        {
+          "name": "reorderPoint",
+          "label": "재주문점",
+          "type": "number",
+          "number": {
+            "step": 1,
+            "min": 0,
+            "max": 9999
+          }
+        },
+        {
+          "name": "orderUnitQty",
+          "label": "발주단위량",
+          "type": "number",
+          "number": {
+            "step": 10,
+            "min": 0,
+            "max": 9999
+          }
+        },
+        {
+          "name": "minOrderQty",
+          "label": "발주최소단위",
+          "type": "number",
+          "number": {
+            "step": 10,
+            "min": 0,
+            "max": 9999
+          }
+        }
+      ]
+    },
+    {
+      "title": "물류/창고 관리",
+      "columns": [
+        {
+          "name": "warehouseLocation",
+          "label": "창고위치",
+          "type": "text"
+        },
+        {
+          "name": "lotManagementYn",
+          "label": "로트관리",
+          "type": "radio",
+          "code": "useYnData"
+        },
+        {
+          "name": "stockYn",
+          "label": "수불여부",
+          "type": "radio",
+          "code": "vatData"
+        }
+      ]
+    },
+    {
+      "title": "품질 관리",
+      "columns": [
+        {
+          "name": "qualityGrade",
+          "label": "품질 등급",
+          "type": "select",
+          "code": "abcClassData"
+        },
+        {
+          "name": "inspectionCycle",
+          "label": "검사주기(일수)",
+          "type": "number",
+          "number": {
+            "step": 1,
+            "min": 0,
+            "max": 9999
+          }
+        },
+        {
+          "name": "returnPolicy",
+          "label": "반품정책",
+          "type": "text"
+        },
+        {
+          "name": "warerantyPeriod",
+          "label": "보증 기간(일수)",
+          "type": "number",
+          "number": {
+            "step": 30,
+            "min": 0,
+            "max": 9999
+          }
+        }
+      ]
+    },
+    {
+      "title": "생명주기 관리",
+      "columns": [
+        {
+          "name": "runD",
+          "label": "런닝일자",
+          "type": "date"
+        },
+        {
+          "name": "endD",
+          "label": "단종일자",
+          "type": "date"
+        },
+        {
+          "name": "openD",
+          "label": "등록일자",
+          "type": "date",
+          "required": true
+        },
+        {
+          "name": "closeD",
+          "label": "종료일자",
+          "type": "date"
+        }
+      ]
+    },
+    {
+      "title": "ERP/회계 정보",
+      "columns": [
+        {
+          "name": "accountCode",
+          "label": "계정과목 코드",
+          "type": "text"
+        },
+        {
+          "name": "costCenter",
+          "label": "원가센터",
+          "type": "text"
+        },
+        {
+          "name": "profitCenter",
+          "label": "손익센터",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "title": "기타 정보",
+      "columns": [
+        {
+          "name": "remarks",
+          "label": "메모",
+          "type": "textarea",
+          "maxLength": 500,
+          "style": {
+            "height": "250px"
+          }
+        }
+      ]
+    }
+  ]
+}

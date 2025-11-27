@@ -1,0 +1,337 @@
+{
+  "buttonPosition": "top",
+  "button": [
+    {
+      "key": "btnHelp",
+      "label": "도움말",
+      "className": "content-help-button",
+      "onClick": "handleDetailHelp",
+      "isChangedCheck": false
+    },
+    {
+      "key": "btnDelete",
+      "label": "삭제",
+      "className": "content-delete-button",
+      "onClick": "handleDetailDelete",
+      "isChangedCheck": false
+    },
+    {
+      "key": "btnSave",
+      "label": "저장",
+      "className": "content-save-button",
+      "onClick": "handleDetailSave",
+      "isChangedCheck": true
+    }
+  ],
+  "rowByColCnt": 1,
+  "form": [
+    {
+      "title": "기본정보",
+      "columns": [
+        {
+          "name": "agentId",
+          "label": "거래처코드",
+          "type": "input",
+          "maxLength": 50,
+          "disabled": true,
+          "required": false
+        },
+        {
+          "name": "agentNm",
+          "label": "거래처명",
+          "type": "input",
+          "maxLength": -1,
+          "disabled": false,
+          "required": true,
+          "code": "brandData"
+        },
+        {
+          "name": "agentEngNm",
+          "label": "영문명",
+          "type": "input",
+          "maxLength": 60,
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "shortNm",
+          "label": "단축명",
+          "type": "input",
+          "maxLength": -1,
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "agentGbn",
+          "label": "거래처구분",
+          "type": "select",
+          "maxLength": 20,
+          "disabled": false,
+          "required": true,
+          "code": "agentData"
+        },
+        {
+          "name": "channGbn",
+          "label": "채널구분",
+          "type": "select",
+          "maxLength": -1,
+          "disabled": false,
+          "required": true,
+          "code": "channData"
+        }
+      ]
+    },
+    {
+      "title": "대표자 정보",
+      "columns": [
+        {
+          "name": "agentCeo",
+          "label": "대표자명",
+          "type": "input",
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "agentBno",
+          "label": "사업자번호",
+          "type": "input",
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "agentTel",
+          "label": "전화번호",
+          "type": "input",
+          "disabled": false,
+          "required": false,
+          "code": "collectionData"
+        },
+        {
+          "name": "agentFax",
+          "label": "팩스",
+          "type": "input",
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "agentEmail",
+          "label": "거래처대표이메일",
+          "type": "input",
+          "disabled": false,
+          "required": false
+        }
+      ]
+    },
+    {
+      "title": "주소 정보",
+      "columns": [
+        {
+          "name": "zipId",
+          "label": "우편번호",
+          "type": "input",
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "agentAddr1",
+          "label": "주소",
+          "type": "input",
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "agentAddr2",
+          "label": "상세주소",
+          "type": "input",
+          "disabled": false,
+          "required": false
+        }
+      ]
+    },
+    {
+      "title": "업태/종목",
+      "columns": [
+        {
+          "name": "agentYup",
+          "label": "업태",
+          "type": "input",
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "agentJong",
+          "label": "종목",
+          "type": "input",
+          "disabled": false,
+          "required": false
+        }
+      ]
+    },
+    {
+      "title": "거래조건",
+      "columns": [
+        {
+          "name": "tradeLim",
+          "label": "거래제한미수금액",
+          "type": "number",
+          "number": {
+            "step": 1000,
+            "min": 0,
+            "max": 999999999
+          }
+        },
+        {
+          "name": "saleRate",
+          "label": "할인율 (%)",
+          "type": "number",
+          "number": {
+            "step": 0.1,
+            "min": 0,
+            "max": 9999
+          }
+        },
+        {
+          "name": "roundGbn",
+          "label": "소수점반올림구분",
+          "type": "radio",
+          "code": "useYnData"
+        },
+        {
+          "name": "updnCnt",
+          "label": "반올림자릿수",
+          "type": "number",
+          "number": {
+            "step": 1,
+            "min": 0,
+            "max": 999999
+          }
+        }
+      ]
+    },
+    {
+      "title": "계좌정보",
+      "columns": [
+        {
+          "name": "bankId",
+          "label": "은행",
+          "type": "select",
+          "code": "bankData",
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "accountNo",
+          "label": "계좌번호",
+          "type": "input",
+          "code": "useYnData",
+          "disabled": false,
+          "required": false
+        }
+      ]
+    },
+    {
+      "title": "담당자정보",
+      "columns": [
+        {
+          "name": "deptId",
+          "label": "담당부서",
+          "type": "input",
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "personId",
+          "label": "담당사원",
+          "type": "input",
+          "disabled": false,
+          "required": false
+        }
+      ]
+    },
+    {
+      "title": "세금계산서 정보",
+      "columns": [
+        {
+          "name": "vatType",
+          "label": "부가세구분",
+          "type": "radio",
+          "code": "vatData"
+        },
+        {
+          "name": "paymentTerm",
+          "label": "결제기간 (일)",
+          "type": "number",
+          "number": {
+            "step": 1,
+            "min": 0,
+            "max": 999999
+          }
+        },
+        {
+          "name": "taxEmail1",
+          "label": "세금계산서수신이메일1",
+          "type": "input",
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "taxDamdang1",
+          "label": "담당자1",
+          "type": "input",
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "taxEmail2",
+          "label": "세금계산서수신이메일2",
+          "type": "input",
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "taxDamdang2",
+          "label": "담당자2",
+          "type": "input",
+          "disabled": false,
+          "required": false
+        }
+      ]
+    },
+    {
+      "title": "기타정보",
+      "columns": [
+        {
+          "name": "openD",
+          "label": "거래시작일자",
+          "type": "date",
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "closeD",
+          "label": "거래종료일자",
+          "type": "date",
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "brandIdList",
+          "label": "취급브랜드",
+          "type": "multi_select",
+          "disabled": false,
+          "required": false,
+          "code": "brandData"
+        },
+        {
+          "name": "tradeMemo",
+          "label": "특이사항",
+          "type": "textarea",
+          "maxLength": 500,
+          "style": {
+            "height": "250px"
+          }
+        }
+      ]
+    }
+  ]
+}

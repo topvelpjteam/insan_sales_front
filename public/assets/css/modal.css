@@ -1,0 +1,208 @@
+@charset "UTF-8";
+.ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: all 0.15s ease-in-out;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #262626;
+  mask-size: contain;
+  mask-position: center center;
+  mask-repeat: no-repeat;
+}
+.ico.primary {
+  color: #335EEA;
+}
+.ico.secondary {
+  color: #506690;
+}
+.ico.success {
+  color: #42BA96;
+}
+.ico.info {
+  color: #7C69EF;
+}
+.ico.warning {
+  color: #ffc35a;
+}
+.ico.danger {
+  color: #DF4759;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  /* top, right, bottom, left 동시에 0 */
+  background-color: rgba(0, 0, 0, 0.45);
+  /* 조금 더 부드러운 블랙 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  backdrop-filter: blur(4px);
+  /* 모던 느낌 추가 */
+}
+
+.modal {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.modal h3 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  color: #1B2A4E;
+}
+.modal p {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  color: #737373;
+  line-height: 1.5;
+}
+.modal .modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  /* 버튼 사이 간격 */
+}
+.modal .modal-buttons button {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+.modal .modal-buttons button:first-child {
+  background: #e0e0e0;
+  color: #1B2A4E;
+  margin-right: 0.5rem;
+  /* 좌우 마진 */
+}
+.modal .modal-buttons button:first-child:hover {
+  background: #d5d5d5;
+}
+.modal .modal-buttons button:last-child {
+  background: #335EEA;
+  color: #fff;
+  margin-left: 0.5rem;
+  /* 좌우 마진 */
+}
+.modal .modal-buttons button:last-child:hover {
+  background: #3B82F6;
+}
+
+/* 오버레이 */
+.frame-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* 모달 */
+.frame-modal-container {
+  position: fixed;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  /* transition 제거됨 */
+  overflow: hidden;
+  z-index: 10000;
+  /* 💡 추가: Flex 컨테이너로 설정 (세로 방향) */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 헤더 */
+.frame-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #335EEA;
+  color: #ffffff;
+  padding: 10px 12px;
+  cursor: move;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  touch-action: none;
+  /* 💡 추가: 헤더 높이는 고정 (shrink: 0) */
+  flex-shrink: 0;
+}
+
+/* 제목 */
+.frame-modal-title {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* 버튼 컨트롤 (생략) */
+.frame-modal-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  pointer-events: auto;
+}
+
+.frame-modal-controls button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.frame-modal-controls button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+/* 닫기 버튼 (생략) */
+.frame-modal-close {
+  background: rgba(255, 0, 0, 0.4);
+  color: #fff;
+}
+
+.frame-modal-close:hover {
+  background: rgba(255, 0, 0, 0.6);
+}
+
+/* 본문 */
+.frame-modal-body {
+  padding: 20px;
+  /* padding-bottom만 0으로 변경 */
+  color: #1B2A4E;
+  font-size: 14px;
+  /* 💡 수정: 남은 공간을 모두 차지하도록 설정 */
+  flex-grow: 1;
+  /* 💡 추가: 내용이 넘치면 수직 스크롤 생성 */
+  overflow-y: auto;
+  /* 💡 최소 높이 0 설정 (Flexbox 환경에서 스크롤이 작동하도록) */
+  min-height: 0;
+}
+
+/* 최대화 시 */
+.frame-modal-container.maximized {
+  border-radius: 10px;
+}

@@ -1,0 +1,86 @@
+//color 
+$white: #ffffff;
+$gray-50: #fafafa;
+$gray-100: #f5f5f5;
+$gray-200: #e5e5e5;
+$gray-300: #d4d4d4;
+$gray-400: #a3a3a3;
+$gray-500: #737373;
+$gray-600: #525252;
+$gray-700: #404040;
+$gray-800: #262626;
+$gray-900: #171717;
+$gray-950: #0a0a0a;
+$black: #000000;
+
+$primary:       #335EEA;;
+$secondary:     #506690;
+$success:       #42BA96;
+$info:          #7C69EF;
+$warning:       #ffc35a;
+$danger:        #DF4759;
+$light:         #eef2f7;
+$dark:          #1B2A4E;
+
+$red:        #ff3b30;
+$orange:     #ff9500;
+$yellow:     #ffcc00;
+$green:      #34c759;
+$mint:       #00c7be;
+$teal:       #30b0c7;
+$cyan:       #32ade6;
+$blue:       #3B82F6;
+$indigo:     #5856d6;
+$purple:     #af52de;
+$pink:       #ff2d55;
+$brown:      #a2845e;
+$gray:       #869ab8;
+
+$background: #f9fafb;
+$border: #e5e5e5;
+$bg-blue: rgba(37, 99, 235, .05);
+
+//form color
+$form-bd: #d4d4d4;
+$form-tx: #404040;
+
+// Shade a color: mix a color with black
+@function shade-color($color, $weight) {
+  @return mix(black, $color, $weight);
+}
+
+//icon
+.ico {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    transition: all .15s ease-in-out;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: $gray-800;
+    mask-size: contain;
+    mask-position: center center;
+    mask-repeat: no-repeat;
+
+    &.primary {
+      color: $primary;
+    }
+    &.secondary {
+      color: $secondary;
+    }
+    &.success {
+      color: $success;
+    }
+    &.info {
+      color: $info;
+    }
+    &.warning {
+      color: $warning;
+    }
+    &.danger {
+      color: $danger;
+    }
+
+
+}

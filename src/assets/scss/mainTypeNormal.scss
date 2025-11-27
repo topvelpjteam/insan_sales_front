@@ -1,0 +1,28 @@
+
+@use "./base.scss";
+@use "./remixicon.scss";
+@use "./layout.scss";
+@use "./login.scss";
+@use "./toast.scss";
+@use "./modal.scss";
+@use "./grid.scss";
+@use "./loader.scss";
+@use "./side_blue.scss";
+@use "./tab.scss";
+@use "./content.scss";
+@use "./multiSelect.scss";
+@use "./aggrid.scss";
+@use "./form.scss";
+@use "./template.scss";
+//@use "./side_black.scss";
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none; // 밑줄 제거
+  color: inherit; // 부모 글자색 상속 (원하는 경우)
+}

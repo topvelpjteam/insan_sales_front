@@ -1,0 +1,97 @@
+{
+  "buttonPosition": "bottom",
+  "button": [
+    {
+      "key": "btnSave2",
+      "label": "저장",
+      "className": "content-save-button",
+      "onClick": "handleOrderMastSave",
+      "isChangedCheck": true
+    }
+  ],
+  "rowByColCnt": 1,
+  "form": [
+    {
+      "title": "발주기본정보",
+      "columns": [
+        {
+          "name": "slipNo",
+          "label": "발주번호",
+          "type": "text",
+          "maxLength": -1,
+          "disabled": true,
+          "required": true
+        },
+        {
+          "name": "orderD",
+          "label": "발주일자",
+          "type": "text",
+          "maxLength": -1,
+          "disabled": true,
+          "required": true,
+          "code": ""
+        },
+        {
+          "name": "requireD",
+          "label": "입고요구일",
+          "type": "text",
+          "maxLength": -1,
+          "disabled": true,
+          "required": true
+        },
+        {
+          "name": "customerName",
+          "label": "매장코드",
+          "type": "text",
+          "maxLength": -1,
+          "disabled": true,
+          "required": true
+        },
+        {
+          "name": "ioId",
+          "label": "발주구분",
+          "type": "radio",
+          "maxLength": -1,
+          "disabled": true,
+          "required": true,
+          "code": "ioIdOptions"
+        },
+        {
+          "name": "recvMemo",
+          "label": "비고",
+          "type": "textarea",
+          "maxLength": -1,
+          "disabled": false,
+          "required": false,
+          "style": {
+            "height": "50px"
+          }
+        },
+        {
+          "name": "recvAddr",
+          "label": "주소",
+          "type": "text",
+          "maxLength": 200,
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "recvPerson",
+          "label": "받는사람",
+          "type": "text",
+          "maxLength": 50,
+          "disabled": false,
+          "required": false
+        },
+        {
+          "name": "recvTel",
+          "label": "전화번호",
+          "type": "text",
+          "maxLength": 20,
+          "disabled": false,
+          "required": false
+        }
+      ]
+    }
+  ]
+}
